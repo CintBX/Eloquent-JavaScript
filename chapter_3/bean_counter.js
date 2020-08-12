@@ -18,22 +18,7 @@
   characters). Rewrite countBs to make use of this new function.
 */
 
-// Step 1: Function countB();
-function countBs(string) {
-    let counter = 0;
-    let result = 0;
-    let lowercaseString = string.toLowerCase();
-    while(counter < string.length) {
-        lowercaseString[counter] == "b" ? result++ : null;
-        counter++;
-    };
-    return result;
-};
-console.log(countBs("BBC"));
-// => 2
-
-
-// Step 2: Function countChar();
+// My solution
 function countChar(string, letter) {
     let counter = 0;
     let result = 0;
@@ -46,5 +31,10 @@ function countChar(string, letter) {
 
     return result;
 };
+
+function countBs(string) {
+    return countChar(string, "b")
+};
+
+console.log(countBs("BBC"));
 console.log(countChar("kakkerlak", "k"));
-// => 4
