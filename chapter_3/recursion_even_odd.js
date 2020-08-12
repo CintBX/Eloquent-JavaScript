@@ -14,26 +14,15 @@
 */
 
 function isEven(number) {
-    if (number > 0 && number % 2 == 0) {
-        return true;
-    } else if (number > 0 && number % 2 == 1) {
-        return false;
-    } else {
-        return isEven(number + 2);
-    }
-
-    // or do nested if/else
-    // if (number > 0) {
-    //     if(number % 2 == 0) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // } else {
-    //     return isEven(number + 2);
-    // }
-  };
+    if(number == 0) return true;
+    else if(number == 1) return false;
+    else if(number < 0) return isEven(-number);
+    else return isEven(number - 2);
+};
 
   console.log(isEven(50));
+  // The algo subtracts 2 from 50 a bunch of times.  if it's even, it'll eventually be 0 and return True
   console.log(isEven(75));
+  // It also subtracts from 75, but if it's an odd number it'll eventually be 1, and return False
   console.log(isEven(-1));
+  // The algo handles negative values by inverting them to positive (- number) and then performing the conditional
