@@ -45,7 +45,7 @@ function sum(numbers) {
     return result;
 };
 
-// Third
+// Third: Doesn't account for all scenarios
 function updatedRange(start, end, step) {
     let result = [];
 
@@ -62,6 +62,42 @@ function updatedRange(start, end, step) {
     return result;
 };
 
-console.log(updatedRange(1, 10));
-console.log(updatedRange(5, 2, -1));
-console.log(sum(range(1, 10)));
+// console.log(updatedRange(1, 10));
+// console.log(updatedRange(5, 2, -1));
+// console.log(sum(range(1, 10)));
+
+
+// UPDATE: range() that accounts for all scenarios (positive step, negative step, no step included for both types of ranges)
+function finalRange(start, end, step = 1) {
+    let result = [];
+
+    if(start < end) {
+      if(step < 0) step = -step;
+      for(var i = start; i <= end; i += step) {
+          result.push(i);
+      };
+    } else if(start > end) {
+      if(step > 0) step = -step;
+      for(var i = start; i >= end; i += step) {
+        result.push(i);
+      };
+    };
+    return result;
+};
+
+// Start->End
+console.log(finalRange(1, 10));
+// =>  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(finalRange(1, 10, 2));
+// =>  [1, 3, 5, 7, 9]
+console.log(finalRange(1, 10, -2));
+// =>  [1, 3, 5, 7, 9]
+
+
+// End->Start
+console.log(finalRange(10, 1))
+// => [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+console.log(finalRange(10, 1, 2))
+// => [10, 8, 6, 4, 2]
+console.log(finalRange(10, 1, -2));
+// => [10, 8, 6, 4, 2]
