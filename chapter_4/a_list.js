@@ -22,10 +22,32 @@ function arrayToList(arr) {
     for(var i = n; i >= 0; i--) {
         list = { value: arr[i], rest: list };
     };
-
     return list;
-
 };
 
-console.log(arrayToList(array));
+// console.log(arrayToList(array));
 // => { value: 10, rest: { value: 20, rest: { value: 30, rest: null } } }
+
+// 2) List to Array
+let list = {
+    value: 1,
+    rest: {
+        value: 2,
+        rest: {
+            value: 3,
+            rest: null
+        }
+    }
+};
+
+function listToArray(list) {
+    let result = [];
+
+    for(let node = list; node; node = node.rest) {
+        if(node) result.push(node.value);
+    };
+    return result;
+};
+
+console.log(listToArray(list));
+// => [1, 2, 3]
