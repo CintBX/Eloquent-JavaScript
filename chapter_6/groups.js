@@ -14,27 +14,22 @@
 
 class Group {
     constructor() {
-        // creates an empty group
         this.group = [];
     };
 
-    add(value) { //good
-        // adds a value to the group UNLESS the group already has that value
+    add(value) {
         if(!this.group.includes(value)) return this.group.push(value);
     }
 
     delete(value) { 
-        // removes the argument/value from the group if it is a member of the group
         return this.group = this.group.filter(element => element != value);
     }
 
-    has(value) { //good
-        // returns a Boolean, indicating whether the param is a member of the group
+    has(value) {
         return this.group.includes(value)
     }
 
     static from(collection) {
-        // takes an iterable object, and creates a group that contains all the values produced by iterating over the object.
         let newGroup = new Group;
         for(let element of collection) {
             newGroup.add(element);
